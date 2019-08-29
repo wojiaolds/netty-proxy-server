@@ -90,24 +90,17 @@ public class GatewayServerHandler extends SimpleChannelInboundHandler<Object> {
                 url = matchUrl();
                 System.out.println("[NETTY-GATEWAY] URL : " + url);
 
-                Future<StringBuilder> future = executor.submit(new Callable<StringBuilder>() {
-                    @Override
-                    public StringBuilder call() {
-                        return HttpClientUtils.post(url, buffer.toString(), GATEWAY_OPTION_HTTP_POST);
-                    }
-                });
+                Future<StringBuilder> future = executor.submit(()-> HttpClientUtils.post(url, buffer.toString(), GATEWAY_OPTION_HTTP_POST));
 
-                future.addListener(new FutureListener<StringBuilder>() {
-                    @Override
-                    public void operationComplete(Future<StringBuilder> future) throws Exception {
-                        if (future.isSuccess()) {
-                            respone = ((StringBuilder) future.get(GATEWAY_OPTION_HTTP_POST, TimeUnit.MILLISECONDS));
+                future.addListener((f)->{
+                        if (f.isSuccess()) {
+                            respone = ((StringBuilder) f.get(GATEWAY_OPTION_HTTP_POST, TimeUnit.MILLISECONDS));
                         } else {
                             respone = new StringBuilder(((Signal) future.cause()).name());
                         }
                         latch.countDown();
                     }
-                });
+                );
 
                 try {
                     latch.await();

@@ -37,11 +37,11 @@ import static com.newlandframework.gateway.commons.GatewayOptions.*;
  * @since 2018/4/18
  */
 public class RoutingLoader implements BeanDefinitionRegistryPostProcessor {
-    public static final List<RouteAttribute> ROUTERS = new ArrayList<RouteAttribute>();
-    public static final List<GatewayAttribute> GATEWAYS = new ArrayList<GatewayAttribute>();
+    public static final List<RouteAttribute> ROUTERS = new ArrayList<>();
+    public static final List<GatewayAttribute> GATEWAYS = new ArrayList<>();
 
-    private static final List<String> KEY_ROUTERS = new ArrayList<String>();
-    private static final List<String> KEY_GATEWAYS = new ArrayList<String>();
+    private static final List<String> KEY_ROUTERS = new ArrayList<>();
+    private static final List<String> KEY_GATEWAYS = new ArrayList<>();
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
@@ -85,7 +85,7 @@ public class RoutingLoader implements BeanDefinitionRegistryPostProcessor {
                     serverPath = p.getProperty(keyPrefix + GATEWAY_PROPERTIES_PREFIX_SERVER_PATH).trim();
                     defaultAddr = p.getProperty(keyPrefix + GATEWAY_PROPERTIES_PREFIX_DEFAULT_ADDR).trim();
 
-                    valuesMap = new LinkedHashMap<String, String>();
+                    valuesMap = new LinkedHashMap<>();
                     valuesMap.put(GATEWAY_PROPERTIES_DEFAULT_ADDR, defaultAddr);
                     valuesMap.put(GATEWAY_PROPERTIES_SERVER_PATH, serverPath);
 
