@@ -54,19 +54,20 @@ public class HttpClientUtils {
             while ((line = reader.readLine()) != null) {
                 responseBuilder.append(line).append("\n");
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
+            System.out.println (e);
         } finally {
             if (wr != null) {
                 try {
                     wr.close();
-                } catch (IOException e) {
+                } catch (Exception e) {
                 }
             }
 
             if (reader != null) {
                 try {
                     reader.close();
-                } catch (IOException e) {
+                } catch (Exception e) {
                 }
             }
 

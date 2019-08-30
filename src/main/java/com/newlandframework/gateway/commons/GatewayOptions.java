@@ -27,7 +27,7 @@ import java.nio.charset.Charset;
  * @since 2018/4/18
  */
 public class GatewayOptions {
-    public static final Charset GATEWAY_OPTION_CHARSET = Charset.forName("GBK");
+    public static final Charset GATEWAY_OPTION_CHARSET = Charset.forName("UTF-8");
     public static final Signal GATEWAY_OPTION_SERVICE_ACCESS_ERROR = Signal.valueOf("[NettyGateway]:Access gateway fail!");
     public static final Signal GATEWAY_OPTION_TASK_POST_ERROR = Signal.valueOf("[NettyGateway]:Http post fail!");
     public static final int GATEWAY_OPTION_PARALLEL = Math.max(2, Runtime.getRuntime().availableProcessors());
@@ -36,7 +36,7 @@ public class GatewayOptions {
     public static final String GATEWAY_OPTION_ROUTE_CONFIG_FILE = "netty-route.properties";
     public static final String GATEWAY_OPTION_KEY_WORD_SPLIT = ",";
     public static final String GATEWAY_OPTION_SERVER_SPLIT = "@";
-    public static final String GATEWAY_OPTION_LOCALHOST = "http://127.10.0.1:8080/";
+    public static final String GATEWAY_OPTION_LOCALHOST = "http://127.0.0.1:8504/hello";
     public static final String GATEWAY_PROPERTIES_PREFIX_KEY_WORD = ".keyWord";
     public static final String GATEWAY_PROPERTIES_PREFIX_MATCH_ADDR = ".matchAddr";
     public static final String GATEWAY_PROPERTIES_PREFIX_DEFAULT_ADDR = ".defaultAddr";
